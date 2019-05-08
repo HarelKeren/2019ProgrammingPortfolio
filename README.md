@@ -7,6 +7,6 @@ harelkeren9@gmail.com
 ##### Completed Nov. 2018
 Object oriented calculator with features including...
 
-// image 
+![Calc](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/Calc01.png?raw=true "Logo Title Text 1")
 
 Source code for calculator: Here
