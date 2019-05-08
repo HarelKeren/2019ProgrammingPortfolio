@@ -19,6 +19,15 @@ A space shooter game
 
 Source code for the Space Shooter: Here
 
+## Processing Etch A Sketch
+##### Completed Oct. 2018
+A Etch A Sketch you can play!
+
+![EtchASketch](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/line-004697.png?raw=true)
+
+Source code for the Space Shooter: Here
+
+
 ## Processing Cars
 ##### Completed Oct. 2018
 Random cars driving 
