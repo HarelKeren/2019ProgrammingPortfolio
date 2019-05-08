@@ -7,6 +7,10 @@ harelkeren9@gmail.com
 ##### Completed Nov. 2018
 Object oriented calculator with features including...
 
-![Calc](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/Calc01.png?raw=true "Logo Title Text 1")
+![Calc](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/Calc01.png?raw=true )
 
 Source code for calculator: Here
+
+## First Semester Processing Space Shooter
+
+![SpaceSooter](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/SpaceShooter01.png?raw=true )
