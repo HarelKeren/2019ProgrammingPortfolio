@@ -1,4 +1,4 @@
-## Welcome to Harel's programming portfolio
+# Welcome to Harel's programming portfolio
 2019
 
 harelkeren9@gmail.com
