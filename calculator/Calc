@@ -1,0 +1,154 @@
+Button[] numBtns = new Button [10];
+Button[] opBtns = new Button [12];
+String displayVal, leftVal, rightVal;
+char opVal;
+float result;
+boolean firstNum, dec;
+//Button btn0;
+
+
+void setup() {
+  size(670, 900);
+  numBtns[0] = new Button(170, 818, 280, 80, color(196, 196, 196)).asNumber(0);
+  numBtns[1] = new Button(90, 700, 120, 80, color(196, 196, 196)).asNumber(1);
+  numBtns[2] = new Button(250, 700, 120, 80, color(196, 196, 196)).asNumber(2);
+  numBtns[3] = new Button(410, 700, 120, 80, color(196, 196, 196)).asNumber(3);
+  numBtns[4] = new Button(90, 585, 120, 80, color(196, 196, 196)).asNumber(4);
+  numBtns[5] = new Button(250, 585, 120, 80, color(196, 196, 196)).asNumber(5);
+  numBtns[6] = new Button(410, 585, 120, 80, color(196, 196, 196)).asNumber(6);
+  numBtns[7] = new Button(90, 470, 120, 80, color(196, 196, 196)).asNumber(7);
+  numBtns[8] = new Button(250, 470, 120, 80, color(196, 196, 196)).asNumber(8);
+  numBtns[9] = new Button(410, 470, 120, 80, color(196, 196, 196)).asNumber(9);
+
+  //fill(255, 153, 51);
+  opBtns[0] = new Button(570, 250, 120, 80, color(255, 153, 51)).asOperator ("/");
+  opBtns[1] = new Button(570, 760, 120, 200, color(255, 153, 51)).asOperator ("=");
+  opBtns[2] = new Button(570, 585, 120, 80, color(255, 153, 51)).asOperator ("+");
+  opBtns[3] = new Button(570, 470, 120, 80, color(255, 153, 51)).asOperator ("-");
+  opBtns[4] = new Button(570, 360, 120, 80, color(255, 153, 51)).asOperator ("X");
+  opBtns[5] = new Button(410, 818, 120, 80, color(255, 153, 51)).asOperator (".");
+  opBtns[6] = new Button(90, 250, 120, 80, color(255, 153, 51)).asOperator ("C");
+  opBtns[7] = new Button(250, 250, 120, 80, color(255, 153, 51)).asOperator ("±");
+  opBtns[8] = new Button(410, 250, 120, 80, color(255, 153, 51)).asOperator ("√");
+  opBtns[9] = new Button(90, 360, 120, 80, color(255, 153, 51)).asOperator ("%");
+  opBtns[10] = new Button(250, 360, 120, 80, color(255, 153, 51)).asOperator ("x^2");
+  opBtns[11] = new Button(410, 360, 120, 80, color(255, 153, 51)).asOperator ("x^3");
+  displayVal = "";
+  leftVal = "";
+  rightVal = "";
+  opVal = ' ';
+  result = 0.0;
+  firstNum = true;
+}
+
+
+
+void draw() {
+  background (78, 78, 78);
+  for (int i=0; i<numBtns.length; i++) {
+    numBtns[i].display();
+    numBtns[i].hover();
+  }
+  for (int i=0; i<opBtns.length; i++) {
+    opBtns[i].display();
+    opBtns[i].hover();
+  }
+  updateDisplay();
+}
+
+
+void updateDisplay() {
+  rectMode (CENTER);
+  fill(213, 232, 212);
+  rect(335, 100, 630, 120);
+  textSize(30);
+  textAlign(RIGHT);
+  fill(0);
+  text(displayVal, 350, 120);
+}
+
+void mouseReleased() {
+  for (int i=0; i<numBtns.length; i++) {
+    if (numBtns[i].hov) {
+      if (firstNum) {
+        leftVal += str(numBtns[i].v);
+        displayVal = leftVal;
+      } else {
+        rightVal += str(numBtns[i].v);
+        displayVal = rightVal;
+
+        // displayVal += str(numBtns[i].v);
+      }
+    }
+  }
+
+  for (int i=0; i<opBtns.length; i++) {
+    if (opBtns[i].hov) {
+      if (opBtns[i].op == "+") {
+        opVal = '+';
+        firstNum = false;
+      } else if (opBtns[i].op == "-") {  
+        opVal = '-';
+        firstNum = false;
+      } else if (opBtns[i].op == "X") {  
+        opVal = '*';
+        firstNum = false;
+      } else if (opBtns[i].op == "/") {  
+        opVal = '/';
+        firstNum = false;
+      } else if (opBtns[i].op == "+/-") {  
+        opVal = '±';
+        firstNum = false;
+      } else if (opBtns[i].op == "C") {  
+        clearButton();
+      } else if (opBtns[i].op == ".") {  
+        if (!dec) {
+          if (firstNum) {
+            leftVal += opBtns[i].op;
+            displayVal = leftVal;
+            dec = true;
+          }
+        }
+     } else if (opBtns[i].op == "±") {
+        if (firstNum) {
+          leftVal = str (float(leftVal)* -1);
+          rightVal = leftVal;
+        } else {
+          rightVal = str(float(rightVal)* -1);
+        } else if (opBtns[i].operators == "%") {
+        if (firstNum) {
+          leftVal = str(float(leftVal)*0.01);
+          displayValue = leftVal; 
+    } else if (opBtns[i].op == "=") {  
+        performCalc();
+        //displayVal = numBtns[i].op;
+      }
+    }
+  }
+}
+
+void performCalc () {
+  if (opVal == '+') {
+    result = float(leftVal) + float(rightVal);
+    displayVal = str (result);
+  } else if (opVal == '-') {
+    result = float(leftVal) - float(rightVal);
+    displayVal = str (result);
+  } else if (opVal == '*') {
+    result = float(leftVal) * float(rightVal);
+    displayVal = str (result);
+  } else if (opVal == '/') {
+    result = float(leftVal) / float(rightVal);
+    displayVal = str (result);
+  }
+  firstNum = true;
+}
+
+void clearButton() {
+  displayVal = "";
+  leftVal = "";
+  rightVal = "";
+  opVal = ' ';
+  result = 0.0;
+  firstNum = true;
+}
