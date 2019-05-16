@@ -36,7 +36,7 @@ Random cars driving
 
 Source code for the Space Shooter: Here
 
-## Processing Speed Convator
+## Processing Speed Convetor
 ##### Completed Oct. 2018
 Convert km/h and MPH
 ![SpeedConv](https://github.com/HarelKeren/2019ProgrammingPortfolio/blob/master/images/SpeedConv.png?raw=true)
